@@ -7,6 +7,21 @@ import (
 	"os"
 )
 
+type problem struct {
+	q string
+	a string
+}
+
+func parseRecords(records [][]string) []problem {
+	p := make([]problem, len(records))
+	for i, r := range records {
+		p[i].q = r[0]
+		p[i].a = r[1]
+	}
+	return p
+}
+
+
 func main() {
 	csvFile := flag.String("fileName", "problems.csv", "File containing questions in the format 'question, answer'")
 	flag.Parse()
@@ -19,16 +34,17 @@ func main() {
 
 	records, _ := reader.ReadAll()
 
-	correct := 0
-	totalQuestions := len(records)
-	var inputAns string
-	for i, data := range records {
-		fmt.Printf("Question #%v : %v ?\n", i, data[0])
-		fmt.Scan(&inputAns)
+	questions := parseRecords(records)
 
-		if inputAns == data[1] {
+	correct := 0
+	var inputAns string
+	for i, q := range questions {
+		fmt.Printf("Question #%v : %v ?\n", i, q.q)
+		fmt.Scanf("%s",&inputAns)
+		if inputAns == q.a {
 			correct++
 		}
 	}
-	fmt.Printf("Score: %v / %v\n", correct, totalQuestions)
+	fmt.Printf("Score: %v / %v\n", correct, len(records))
 }
+
