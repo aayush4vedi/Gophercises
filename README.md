@@ -61,3 +61,8 @@ Used BFS!!
   * get base url
 * `encoding/xml` 
   * similar to json.Look at the [example](https://golang.org/pkg/encoding/xml/)
+
+## 6. Hackerrank Problems
+* CamleCase: [Problem](https://www.hackerrank.com/challenges/camelcase/problem) [Solution](https://github.com/gophercises/hr1/tree/solution/camel)
+* Caeser-Cipher: [Problem](https://www.hackerrank.com/challenges/caesar-cipher-1/problem), [Solution](https://github.com/gophercises/hr1/tree/solution/caesar)
+ ** Learnt about [rune](https://www.geeksforgeeks.org/rune-in-golang/)
