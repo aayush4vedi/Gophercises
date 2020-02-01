@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"net/url"
 
 	"github.com/Gophercises/link"
 )
@@ -30,5 +31,18 @@ func main() {
 	for _, l := range links {
 		fmt.Println(l)
 	}
-
+	/*
+		Possible links:
+		A. partial links: `/path`
+		B. full links: starting with `http` or `https`
+		C. Anything else-not to be included in the list: fragments-`#signup`, `mailto@xyz.com`
+	*/
+	//for A.
+	reqUrl := resp.Request.URL
+	baseUrl := &url.URL{
+		Scheme: reqUrl.Scheme,
+		Host:   reqUrl.Host,
+	}
+	base := baseUrl.String()
+	fmt.Printf("%+v\n", base)
 }
