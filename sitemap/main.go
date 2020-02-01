@@ -1,15 +1,25 @@
 package main
 
 import (
+	"encoding/xml"
 	"flag"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 
 	"github.com/Gophercises/link"
 )
+
+type loc struct {
+	Value string `xml:"loc"`
+}
+
+type urlset struct {
+	Urls []loc `xml:"url"`
+}
 
 /*
 	1. GET the webpage
@@ -24,13 +34,21 @@ func main() {
 	maxDepth := flag.Int("depth", 10, "the maximum number of links deep to traverse")
 	flag.Parse()
 	pages := bfs(*urlFlag, *maxDepth)
+	var toXml urlset
 	for _, p := range pages {
-		fmt.Println(p)
+		toXml.Urls = append(toXml.Urls, loc{p})
 	}
+	fmt.Print(xml.Header)
+	enc := xml.NewEncoder(os.Stdout)
+	enc.Indent("", "  ")
+	if err := enc.Encode(toXml); err != nil {
+		panic(err)
+	}
+	fmt.Println()
 }
 
 func bfs(urlStr string, maxDepth int) []string {
-	seen := make(map[string]struct{}) //could have used `map[string]bool` here but empty structs use less memory.TODO: READ: https://dave.cheney.net/2014/03/25/the-empty-struct
+	seen := make(map[string]struct{}) //could have used `map[string]bool` here but empty structs use less memory. READ: https://dave.cheney.net/2014/03/25/the-empty-struct
 	var q map[string]struct{}
 	nq := map[string]struct{}{
 		urlStr: struct{}{},
@@ -41,7 +59,7 @@ func bfs(urlStr string, maxDepth int) []string {
 			break
 		}
 		for url, _ := range q {
-			if _, ok := seen[url]; ok { //TODO: add in notes
+			if _, ok := seen[url]; ok { 
 				continue
 			}
 			seen[url] = struct{}{}
