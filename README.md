@@ -41,6 +41,23 @@ Collection of exercises in Golang from the amazing [gophercises.com](https://gop
 ## 4. HTML Parse
 * [Problem Statement](https://github.com/gophercises/link) 
 * [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/link)
+### Highlight
+Used DFS
 ### Packages Used
 * `golang.org/x/net/html`
 * `strings` => `strings.Join(strings.Fields(ret), " ")`
+
+## 5. Sitemap
+* [Problem Statement[(https://github.com/gophercises/sitemap)
+* [Solution](https://github.com/aayush4vedi/Gophercises/blob/master/sitemap/main.go)
+
+### Highlight
+Used BFS!!
+
+### Packages Used
+* `strings` => `strings.HasPrefix(targetString, prefixToCheck)`
+* `net/http`
+  * GETting a page
+  * get base url
+* `encoding/xml` 
+  * similar to json.Look at the [example](https://golang.org/pkg/encoding/xml/)
