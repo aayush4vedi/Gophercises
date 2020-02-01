@@ -40,6 +40,7 @@ Collection of exercises in Golang from the amazing [gophercises.com](https://gop
 
 ## 4. HTML Parse
 * [Problem Statement](https://github.com/gophercises/link) 
-* [Solution]()
+* [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/link)
 ### Packages Used
-* ``
+* `golang.org/x/net/html`
+* `strings` => `strings.Join(strings.Fields(ret), " ")`
