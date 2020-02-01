@@ -6,7 +6,8 @@
 
 Collection of exercises in Golang from the amazing [gophercises.com](https://gophercises.com).
 ## 1. Quiz Game
-[Problem Statement](https://github.com/gophercises/quiz) . [My solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiz)
+* [Problem Statement](https://github.com/gophercises/quiz)
+* [My solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiz)
 ### Packages Used 
 * flag => for Command Line Flags(returns a pointer) :: [GoByExample](https://gobyexample.com/command-line-flags)
 * encoding/csv : nice [medium article](https://medium.com/@barunthapa/working-with-csv-in-go-50a4f540e623)
@@ -24,6 +25,21 @@ Collection of exercises in Golang from the amazing [gophercises.com](https://gop
 	      newArr[v] = arr[i]
     }```
 ## 2. URL Shortner
-[Problem Staement](https://github.com/gophercises/urlshort) . [My Solution](https://github.com/aayush4vedi/Gophercises/tree/master/urlshort)
+* [Problem Staement](https://github.com/gophercises/urlshort) 
+* [My Solution](https://github.com/aayush4vedi/Gophercises/tree/master/urlshort)
 ### Packages Used
 * `gopkg.in/yaml.v2`
+
+## 3. Choose Your Own Adventure
+* [Problem Statement](https://github.com/gophercises/cyoa)
+* [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/cyoa)
+### Packages Used
+* `encoding/json`
+* `html/template`
+
+
+## 4. HTML Parse
+* [Problem Statement](https://github.com/gophercises/link) 
+* [Solution]()
+### Packages Used
+* ``
