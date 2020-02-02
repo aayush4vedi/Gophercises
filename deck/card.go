@@ -12,8 +12,10 @@ const (
 	Diamond
 	Club
 	Heart
-	Joker
+	Joker // this is a special case
 )
+
+var suits = [...]Suit{Spade, Diamond, Club, Heart}
 
 type Rank uint8
 
@@ -34,6 +36,11 @@ const (
 	King
 )
 
+const (
+	minRank = Ace
+	maxRank = King
+)
+
 type Card struct {
 	Suit
 	Rank
@@ -44,4 +51,14 @@ func (c Card) String() string {
 		return c.Suit.String()
 	}
 	return fmt.Sprintf("%s of %ss", c.Rank.String(), c.Suit.String())
+}
+
+func New() []Card {
+	var cards []Card
+	for _, suit := range suits {
+		for rank := minRank; rank <= maxRank; rank++ {      // new way of traversal.Just fucking look at it
+			cards = append(cards, Card{Suit: suit, Rank: rank})
+		}
+	}
+	return cards
 }
