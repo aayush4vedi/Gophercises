@@ -1,9 +1,12 @@
-//go:generate stringer -type=Suit,Rank  
+//go:generate stringer -type=Suit,Rank
 //cmd: $ go generate
 
 package deck
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Suit uint8
 
@@ -20,7 +23,7 @@ var suits = [...]Suit{Spade, Diamond, Club, Heart}
 type Rank uint8
 
 const (
-	_ Rank = iota
+	_ Rank = iota //TODO: read John-Calhoun's article on `_`
 	Ace
 	Two
 	Three
@@ -53,12 +56,37 @@ func (c Card) String() string {
 	return fmt.Sprintf("%s of %ss", c.Rank.String(), c.Suit.String())
 }
 
-func New() []Card {
+func New(opts ...func([]Card) []Card) []Card {
 	var cards []Card
 	for _, suit := range suits {
-		for rank := minRank; rank <= maxRank; rank++ {      // new way of traversal.Just fucking look at it
+		for rank := minRank; rank <= maxRank; rank++ {
 			cards = append(cards, Card{Suit: suit, Rank: rank})
 		}
 	}
+	for _, opt := range opts {
+		cards = opt(cards)
+	}
 	return cards
+}
+
+func DefaultSort(cards []Card) []Card {
+	sort.Slice(cards, Less(cards))
+	return cards
+}
+
+func Sort(less func(cards []Card) func(i, j int) bool) func([]Card) []Card {
+	return func(cards []Card) []Card {
+		sort.Slice(cards, less(cards))
+		return cards
+	}
+}
+
+func Less(cards []Card) func(i, j int) bool {
+	return func(i, j int) bool {
+		return absRank(cards[i]) < absRank(cards[j])
+	}
+}
+
+func absRank(c Card) int {
+	return int(c.Suit)*int(maxRank) + int(c.Rank)
 }
