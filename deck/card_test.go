@@ -2,6 +2,7 @@ package deck
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 )
 
@@ -74,5 +75,24 @@ func TestDeck(t *testing.T) {
 	// 13 ranks * 4 suits * 3 decks
 	if len(cards) != 13*4*3 {
 		t.Errorf("Expected %d cards, received %d cards.", 13*4*3, len(cards))
+	}
+}
+
+//Create a seed that we know about 
+func TestShuffle(t *testing.T) {
+	// make shuffleRand deterministic
+	// First call to shuffleRand.Perm(52) should be:
+	// [40 35 ... ]
+	shuffleRand = rand.New(rand.NewSource(0))
+
+	orig := New()
+	first := orig[40]
+	second := orig[35]
+	cards := New(Shuffle)
+	if cards[0] != first {
+		t.Errorf("Expected the first card to be %s, received %s.", first, cards[0])
+	}
+	if cards[1] != second {
+		t.Errorf("Expected the first card to be %s, received %s.", second, cards[1])
 	}
 }

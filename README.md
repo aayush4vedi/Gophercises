@@ -60,14 +60,14 @@ Used BFS!!
 ## 6. Hackerrank Problems
 * CamleCase: [Problem](https://www.hackerrank.com/challenges/camelcase/problem) [Solution](https://github.com/gophercises/hr1/tree/solution/camel)
 * Caeser-Cipher: [Problem](https://www.hackerrank.com/challenges/caesar-cipher-1/problem), [Solution](https://github.com/gophercises/hr1/tree/solution/caesar)
- ** Learnt about [rune](https://www.geeksforgeeks.org/rune-in-golang/)
+ * Learnt about [rune](https://www.geeksforgeeks.org/rune-in-golang/)
 
 ## 7. CLI Task Manager
 [Problem](https://courses.calhoun.io/lessons/les_goph_36) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/task)
 
 ### Highlight
-* Connected with DB - **BoltDB**
-* CLI package- **Cobra**
+* Connected with DB - *BoltDB*
+* CLI package- *Cobra*
 
 #### Packages Used
 
@@ -77,9 +77,9 @@ Used BFS!!
   * `encoding/binary` : [go-page](https://golang.org/pkg/encoding/binary/), [my implementation](https://github.com/aayush4vedi/Gophercises/blob/7aac7de0cab35554f30be51eb3af597e234997fe/task/db/task.go#L71)
 * `storm` : provides toolkit for BoltDB. Is like it's ''gorm'' . [doc](https://github.com/asdine/storm)
 * `github.com/spf13/cobra`
-  ** [Readme](https://github.com/spf13/cobra)
+  * [Readme](https://github.com/spf13/cobra)
 *  `go-homedir`
-  ** [readme](https://github.com/mitchellh/go-homedir)
+  * [readme](https://github.com/mitchellh/go-homedir)
 * `strconv` => [Atoi](https://golang.org/pkg/strconv/#example_Atoi)
 
 ## 8. Phone Number Normalizer
@@ -94,3 +94,22 @@ Used BFS!!
 * go-sql driver(for postgres):`lib/pq` : [doc](https://godoc.org/github.com/lib/pq)
 * `sqlx` : [doc](https://github.com/jmoiron/sqlx), provides extensio to `database/sql` package
 * `jinzhu/gorm` : [github](https://github.com/jinzhu/gorm) 
+
+## 9. Deck of Cards
+[Problem](https://courses.calhoun.io/lessons/les_goph_54) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/deck)
+
+### Highlight
+* A good sysD problem #interviews
+* Tests are written properly
+
+#### Used Packages
+* `math/rand`
+* `sort` 
+  * `sort.Slice(cards, less(cards))` : [implementation](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card.go#L75)
+* `fmt.stringer` : [Article](https://riptutorial.com/go/example/9983/stringer) , [doc](https://godoc.org/golang.org/x/tools/cmd/stringer)
+  * `//go:generate stringer -type=Suit,Rank` , Here these are the names of types we want to generate methods for.
+  * `//cmd: $ go generate`
+* ''Shuffling'':
+  * [How to shuffle](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card.go#L96)
+  * [How to test](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card_test.go#L81)
+
