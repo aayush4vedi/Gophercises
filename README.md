@@ -81,3 +81,16 @@ Used BFS!!
 *  `go-homedir`
   ** [readme](https://github.com/mitchellh/go-homedir)
 * `strconv` => [Atoi](https://golang.org/pkg/strconv/#example_Atoi)
+
+## 8. Phone Number Normalizer
+[Problem](https://courses.calhoun.io/lessons/les_goph_46) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/phone)
+
+### Highlight
+* DB: postrgesql
+* gorm
+
+#### Used packages:
+* `database/sql`: [doc](https://golang.org/pkg/database/sql/), all commands from here
+* go-sql driver(for postgres):`lib/pq` : [doc](https://godoc.org/github.com/lib/pq)
+* `sqlx` : [doc](https://github.com/jmoiron/sqlx), provides extensio to `database/sql` package
+* `jinzhu/gorm` : [github](https://github.com/jinzhu/gorm) 
