@@ -2,6 +2,7 @@ package main
 
 import "testing"
 
+// Table Driven Testing`
 func TestNormalize(t *testing.T) {
 	testCase := []struct {
 		input string
@@ -17,10 +18,12 @@ func TestNormalize(t *testing.T) {
 		{"(123)456-7892", "1234567892"},
 	}
 	for _, tc := range testCase {
-		actual := tc.want
-		got := normalize(tc.input)
-		if actual != got {
-			t.Errorf("Found %s, wanted %s", got, actual)
-		}
+		t.Run(tc.input, func(t *testing.T) {
+			actual := tc.want
+			got := normalize(tc.input)
+			if actual != got {
+				t.Errorf("Found %s, wanted %s", got, actual)
+			}
+		})
 	}
 }
