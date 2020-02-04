@@ -75,7 +75,7 @@ Used BFS!!
   * Everything is on [github](https://github.com/boltdb/bolt) page.
   * All buckets have key/value pairs - both in byte slices `[]byte`, so need to encode/decode int->byte
   * `encoding/binary` : [go-page](https://golang.org/pkg/encoding/binary/), [my implementation](https://github.com/aayush4vedi/Gophercises/blob/7aac7de0cab35554f30be51eb3af597e234997fe/task/db/task.go#L71)
-* `storm` : provides toolkit for BoltDB. Is like it's ''gorm'' . [doc](https://github.com/asdine/storm)
+* `storm` : provides toolkit for BoltDB. Is like it's **gorm** . [doc](https://github.com/asdine/storm)
 * `github.com/spf13/cobra`
   * [Readme](https://github.com/spf13/cobra)
 *  `go-homedir`
@@ -109,7 +109,28 @@ Used BFS!!
 * `fmt.stringer` : [Article](https://riptutorial.com/go/example/9983/stringer) , [doc](https://godoc.org/golang.org/x/tools/cmd/stringer)
   * `//go:generate stringer -type=Suit,Rank` , Here these are the names of types we want to generate methods for.
   * `//cmd: $ go generate`
-* ''Shuffling'':
+* **Shuffling**:
   * [How to shuffle](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card.go#L96)
   * [How to test](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card_test.go#L81)
 
+## 10. File Renamer
+[Problem](https://courses.calhoun.io/lessons/les_goph_79) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/renamer)
+
+### Highlight
+* **Files** & **Filepath**
+* **Regex**
+
+#### Used Packages:
+
+* `path/filepath`  : [doc)
+  * `filepath.Walk`
+  * `filepath.Dir`
+  * `filepath.Join`  // as diff OS use diff joining(`\` in windows)
+* `regex` : [doc](https://golang.org/pkg/regexp/) , [My implementation](https://github.com/aayush4vedi/Gophercises/blob/aeac8b0a32766c8766328ae89de74f4cff7fb36b/renamer/main.go#L74)
+ * `regexp.MustCompile`
+* `os` => `os.Rename`
+* `strings` 
+  * `sort.Strings()`
+  * `strings.Split()`
+  * `strings.Join()`
+  * `strings.Title()`
