@@ -75,7 +75,7 @@ Used BFS!!
   * Everything is on [github](https://github.com/boltdb/bolt) page.
   * All buckets have key/value pairs - both in byte slices `[]byte`, so need to encode/decode int->byte
   * `encoding/binary` : [go-page](https://golang.org/pkg/encoding/binary/), [my implementation](https://github.com/aayush4vedi/Gophercises/blob/7aac7de0cab35554f30be51eb3af597e234997fe/task/db/task.go#L71)
-* `storm` : provides toolkit for BoltDB. Is like it's **gorm** . [doc](https://github.com/asdine/storm)
+* `storm` : provides toolkit for BoltDB. Is like it's *gorm* . [doc](https://github.com/asdine/storm)
 * `github.com/spf13/cobra`
   * [Readme](https://github.com/spf13/cobra)
 *  `go-homedir`
@@ -109,7 +109,7 @@ Used BFS!!
 * `fmt.stringer` : [Article](https://riptutorial.com/go/example/9983/stringer) , [doc](https://godoc.org/golang.org/x/tools/cmd/stringer)
   * `//go:generate stringer -type=Suit,Rank` , Here these are the names of types we want to generate methods for.
   * `//cmd: $ go generate`
-* **Shuffling**:
+* *Shuffling*:
   * [How to shuffle](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card.go#L96)
   * [How to test](https://github.com/aayush4vedi/Gophercises/blob/82be1cda692638652c555f7f3419a8b8e5dae501/deck/card_test.go#L81)
 
@@ -117,12 +117,12 @@ Used BFS!!
 [Problem](https://courses.calhoun.io/lessons/les_goph_79) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/renamer)
 
 ### Highlight
-* **Files** & **Filepath**
-* **Regex**
+* *Files* & *Filepath*
+* *Regex*
 
 #### Used Packages:
 
-* `path/filepath`  : [doc)
+* `path/filepath`  
   * `filepath.Walk`
   * `filepath.Dir`
   * `filepath.Join`  // as diff OS use diff joining(`\` in windows)
@@ -134,3 +134,40 @@ Used BFS!!
   * `strings.Split()`
   * `strings.Join()`
   * `strings.Title()`
+
+## 11. Quiet HackerNews
+[Problem](https://courses.calhoun.io/lessons/les_goph_85]() , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiethn)
+
+### Highlight
+* Thorough understanding of **concurrency**(goroutines, channels, mutex)
+* **How not to use goroutines**
+* **Caching**
+* Using Template(`.gohtml`)
+
+#### Used Packages
+* `html/template` 
+  * `tpl := template.Must(template.ParseFiles("./index.gohtml"))`
+* `net/http`
+  * `http.HandleFunc("/", handler(numStories, tpl))`
+  * Starting server:  `log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))`
+  * Loggin errors: `http.Error(w, err.Error(), http.StatusInternalServerError)`
+* `time`
+  * ticker: `ticker := time.NewTicker(3 * time.Second)`
+  * Comparing times: `if time.Now().Sub(sc.expiration) < 0`
+* `sync`
+ * **mutex** :Load time got reduced from 2 sec to 1.2µs! Caching is always much faster than all the concurrencies.
+   * `sc.mutex.Lock()
+defer sc.mutex.Unlock()` ~/Always defer a mutex; else app will be frozen & you'll keep on scratching head`
+
+* `sort`
+ * Sorting 2 structs based on one key:
+  * ``` type result struct {
+		idx  int
+		item item
+		err  error
+	}
+        sort.Slice(results, func(i, j int) bool {
+		return results[i].idx < results[j].idx
+	})```
+
+* You can limit your workers via channels, or with something like the [x/sync/semaphore](https://godoc.org/golang.org/x/sync/semaphore) package
