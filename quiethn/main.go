@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Gophercises/quiethn/hn"
@@ -53,9 +54,14 @@ func handler(numStories int, tpl *template.Template) http.HandlerFunc {
 var (
 	cache           []item
 	cacheExpiration time.Time
+	cacheMutex      sync.Mutex
 )
 
+// Load time got reduced from 2 sec to 1.2µs!
+// Hence caching is always much faster than all the concurrencies.
 func getCachedStories(numStories int) ([]item, error) {
+	cacheMutex.Lock()
+	defer cacheMutex.Unlock() //Always defer a mutex; else app will be frozenn & you'll keep on scratching head
 	if time.Now().Sub(cacheExpiration) < 0 {
 		return cache, nil
 	}
