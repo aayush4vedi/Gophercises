@@ -171,3 +171,26 @@ defer sc.mutex.Unlock()` ~/Always defer a mutex; else app will be frozen & you'l
 	})```
 
 * You can limit your workers via channels, or with something like the [x/sync/semaphore](https://godoc.org/golang.org/x/sync/semaphore) package
+
+# 12. Recover
+- Panic/Recover Middleware for an HTTP server.
+[Problem](https://courses.calhoun.io/lessons/les_goph_92) [Solution](https://github.com/aayush4vedi/Gophercises/blob/master/recover/main.go) 
+
+### Highlight
+* Middleware
+* Defer, panic, recover
+* Errors
+  * Errors: `w.WriteHeader(http.StatusInternalServerError)`
+  * Error-stack : `debug.Stack()`
+
+#### Used Packages
+* `runtime` => `stack()`  [doc](https://golang.org/pkg/runtime/#Stack)
+* `net/http`
+ * ResponseWriter: is just an interface. [doc](https://golang.org/pkg/net/http/#ResponseWriter)
+* Midllware Interface:
+ * [Hijacker](https://golang.org/pkg/net/http/#Hijacker)
+ * [Flusher](https://golang.org/pkg/net/http/#Flusher) =>[implementation](https://github.com/urfave/negroni/blob/master/response_writer.go#L96)
+
+* 3rd party middleware for panic/recover:
+* [negroni](https://github.com/urfave/negroni)
+* [chi](https://github.com/go-chi/chi)
