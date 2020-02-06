@@ -136,7 +136,7 @@ Used BFS!!
   * `strings.Title()`
 
 ## 11. Quiet HackerNews
-[Problem](https://courses.calhoun.io/lessons/les_goph_85]() , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiethn)
+[Problem](https://courses.calhoun.io/lessons/les_goph_85) , [Solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiethn)
 
 ### Highlight
 * Thorough understanding of **concurrency**(goroutines, channels, mutex)
