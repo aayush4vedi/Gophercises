@@ -2,10 +2,11 @@ package scheduler
 
 import "fmt"
 
-type Schedule struct {
-	Thread int
-	Jobs   []Job
-}
+// type Schedule struct {
+// 	Thread int
+// 	Jobs   []Job
+// }
+ type Schedule map[int][]Job
 
 func PrintSchedule(schedules []Schedule) {
 	for _, s := range schedules {
@@ -16,3 +17,5 @@ func PrintSchedule(schedules []Schedule) {
 		fmt.Println()
 	}
 }
+
+
