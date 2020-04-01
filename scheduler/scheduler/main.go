@@ -24,9 +24,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	for _, j := range jobs {
-		fmt.Printf("%+v\n", j)
-	}
+
 
 	scheduler.SchedulerController(ThreadCount, jobs)
 	os.Exit(1)
