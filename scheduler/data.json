@@ -1,0 +1,37 @@
+[
+    {
+        "name": "J1",
+        "duration" : 10,
+        "deadline" : 10,
+        "priority": 1,
+        "usertype": 1
+    },
+    {
+        "name": "J2",
+        "duration" : 20,
+        "deadline" : 40,
+        "priority": 1,
+        "usertype": 2
+    },
+    {
+        "name": "J3",
+        "duration" : 15,
+        "deadline" : 40,
+        "priority": 2,
+        "usertype": 1
+    },
+    {
+        "name": "J4",
+        "duration" : 30,
+        "deadline" : 40,
+        "priority": 1,
+        "usertype": 3
+    },
+    {
+        "name": "J5",
+        "duration" : 10,
+        "deadline" : 30,
+        "priority": 2,
+        "usertype": 3
+    }
+]
