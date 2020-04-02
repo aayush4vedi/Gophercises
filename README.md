@@ -4,7 +4,7 @@
 </p>
 
 
-Collection of exercises in Golang from the amazing [gophercises.com](https://gophercises.com).
+Collection of exercises in Golang from the amazing [gophercises.com](https://gophercises.com) and many more.
 ## 1. Quiz Game
 [Problem Statement](https://github.com/gophercises/quiz), [My solution](https://github.com/aayush4vedi/Gophercises/tree/master/quiz)
 #### Packages Used 
